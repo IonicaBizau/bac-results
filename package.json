@@ -21,7 +21,8 @@
   },
   "homepage": "https://github.com/IonicaBizau/bac-results",
   "dependencies": {
-    "mandrill-api": "^1.0.40"
+    "mandrill-api": "^1.0.40",
+    "statique": "0.3.6"
   },
   "devDependencies": {}
 }
