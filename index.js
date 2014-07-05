@@ -1,6 +1,5 @@
 // Dependencies
-var Request = require("request")
-  , Mandrill = require("mandrill-api/mandrill")
+var Mandrill = require("mandrill-api/mandrill")
   , Config = require("./config")
   , MandrillClient = new Mandrill.Mandrill(Config.mandrillKey)
   , Http = require("http")
@@ -12,6 +11,9 @@ const REQ_URL = Url.parse(
     Config.reqUrl || "http://static.bacalaureat.edu.ro/2014/rapoarte/BH/index.html"
 );
 
+// This becomes `true` once the email is submitted.
+var sent = false;
+
 
 /**
  * sendEmail
@@ -22,6 +24,7 @@ const REQ_URL = Url.parse(
  * @return
  */
 function sendEmail() {
+    sent = true;
     MandrillClient.messages.send({
         message: {
             from_email: Config.from.email
@@ -50,7 +53,10 @@ function checkUrl() {
       , path: REQ_URL.path
     }
   , req = Http.request(options, function(res) {
-        console.log(JSON.stringify(res.statusCode));
+        if (res.statusCode !== 404) {
+            return sendEmail();
+        }
+        checkUrl();
     });
 
     req.end();
