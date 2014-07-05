@@ -1,0 +1,11 @@
+{
+    "mandrillKey": "..."
+  , "to": {
+        "email": "me@something.com"
+      , "name": "Ionică"
+    }
+  , "from": {
+        "email": "no@spam.com"
+      , "name": "BAC Exams"
+    }
+}
