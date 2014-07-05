@@ -4,7 +4,7 @@
   "description": "A daemon to email the user when the baccalaureate results are posted on the official website.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "sh test/main.sh"
   },
   "repository": {
     "type": "git",

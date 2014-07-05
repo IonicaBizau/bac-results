@@ -53,10 +53,11 @@ function checkUrl() {
       , path: REQ_URL.path
     }
   , req = Http.request(options, function(res) {
+        console.log(res.statusCode, typeof res.statusCode, res.statusCode === 404);
         if (res.statusCode !== 404) {
             return sendEmail();
         }
-        checkUrl();
+        setTimeout(checkUrl, Config.timeout || 1000);
     });
 
     req.end();
