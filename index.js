@@ -39,7 +39,7 @@ function sendEmail() {
                 }
             ]
           , subject: Config.subject
-          , text: Config.text
+          , text: Config.text + "\n\n" + REQ_URL
         }
     }, function(result) {
         console.log(result);
@@ -53,17 +53,15 @@ function checkUrl() {
         debugger;
         if (!oldHtml) {
             oldHtml = newHtml = body;
-            checkUrl();
+            setTimeout(checkUrl, Config.timeout || 1000);
             return;
         }
         oldHtml = newHtml;
         newHtml = body;
-        console.log("OLD: ", oldHtml.length);
-        console.log("NEW: ", newHtml.length);
         if (newHtml !== oldHtml) {
             return sendEmail();
         }
-        checkUrl();
+        setTimeout(checkUrl, Config.timeout || 1000);
     });
 }
 
