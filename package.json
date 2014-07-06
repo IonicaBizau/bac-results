@@ -23,6 +23,7 @@
   "dependencies": {
     "mandrill-api": "^1.0.40",
     "statique": "0.3.6"
+    "request": "^2.36.0"
   },
   "devDependencies": {},
   "directories": {
