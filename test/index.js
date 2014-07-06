@@ -7,20 +7,24 @@ var Statique = require("statique")
 var posted = false;
 setTimeout(function () {
     posted = true;
-}, 10 * 1000);
+}, 30 * 1000);
 
 // Statique config
 Statique.setRoutes({
     "/": function (req, res) {
+        var msg =  "Hey you, nothing here yet.";
         if (!posted) {
-            return Statique.error(req, res, 404, "Hey you, nothing here yet.");
+            console.log(msg);
+            return Statique.error(req, res, 404, msg);
         }
-        return Statique.error(req, res, 200, "Awesome results.");
+        msg =  "Awesome results."
+            console.log(msg);
+        return Statique.error(req, res, 200, msg);
     }
 });
 
 // Create server
-Http.createServer(Statique.serve).listen(8000);
+Http.createServer(Statique.serve).listen(9000);
 
 // output
 console.log("Listening on 8000.");
