@@ -5,6 +5,7 @@ var Request = require("request")
   , MandrillClient = new Mandrill.Mandrill(Config.mandrillKey)
   , Http = require("http")
   , Url = require("url")
+  , Cheerio = require("cheerio")
   ;
 
 // The request url where the results are supposed to be posted
@@ -50,7 +51,6 @@ function sendEmail() {
 
 function checkUrl() {
     Request(REQ_URL, function (error, response, body) {
-        debugger;
         if (!oldHtml) {
             oldHtml = newHtml = body;
             setTimeout(checkUrl, Config.timeout || 1000);
@@ -58,8 +58,16 @@ function checkUrl() {
         }
         oldHtml = newHtml;
         newHtml = body;
+        $1 = Cheerio.load(newHtml);
+        $2 = Cheerio.load(newHtml);
+
+        console.log($1("#ContentPlaceHolderBody_LabelTitle").text())
+
+
         if (newHtml !== oldHtml) {
-            return sendEmail();
+            if ($1("#ContentPlaceHolderBody_LabelTitle").text() !== $2("#ContentPlaceHolderBody_LabelTitle")) {
+                return sendEmail();
+            }
         }
         setTimeout(checkUrl, Config.timeout || 1000);
     });
