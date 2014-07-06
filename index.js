@@ -1,5 +1,6 @@
 // Dependencies
-var Mandrill = require("mandrill-api/mandrill")
+var Request = require("request")
+  , Mandrill = require("mandrill-api/mandrill")
   , Config = require("./config")
   , MandrillClient = new Mandrill.Mandrill(Config.mandrillKey)
   , Http = require("http")
@@ -7,12 +8,14 @@ var Mandrill = require("mandrill-api/mandrill")
   ;
 
 // The request url where the results are supposed to be posted
-const REQ_URL = Url.parse(
-    Config.reqUrl || "http://static.bacalaureat.edu.ro/2014/rapoarte/BH/index.html"
-);
+const REQ_URL = Config.reqUrl || "http://static.bacalaureat.edu.ro/2014/rapoarte/BH/index.html"
 
 // This becomes `true` once the email is submitted.
 var sent = false;
+
+var oldHtml = null
+  , newHtml = null
+  ;
 
 
 /**
@@ -46,21 +49,22 @@ function sendEmail() {
 }
 
 function checkUrl() {
-    var options = {
-        method: 'HEAD'
-      , host: REQ_URL.host
-      , port: 80
-      , path: REQ_URL.path
-    }
-  , req = Http.request(options, function(res) {
-        console.log(res.statusCode, typeof res.statusCode, res.statusCode === 404);
-        if (res.statusCode !== 404) {
+    Request(REQ_URL, function (error, response, body) {
+        debugger;
+        if (!oldHtml) {
+            oldHtml = newHtml = body;
+            checkUrl();
+            return;
+        }
+        oldHtml = newHtml;
+        newHtml = body;
+        console.log("OLD: ", oldHtml.length);
+        console.log("NEW: ", newHtml.length);
+        if (newHtml !== oldHtml) {
             return sendEmail();
         }
-        setTimeout(checkUrl, Config.timeout || 1000);
+        checkUrl();
     });
-
-    req.end();
 }
 
 checkUrl();
