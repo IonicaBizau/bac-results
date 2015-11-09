@@ -25,7 +25,6 @@ var oldHtml = null
  *
  * @name sendEmail
  * @function
- * @return
  */
 function sendEmail() {
     sent = true;

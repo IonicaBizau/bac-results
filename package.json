@@ -14,8 +14,8 @@
     "baccalaureate",
     "daemon"
   ],
-  "author": "Ionică Bizău <bizauionica@gmail.com>",
-  "license": "MIT",
+  "author": "Ionică Bizău <bizauionica@gmail.com> (http://ionicabizau.net)",
+  "license": "KINDLY",
   "bugs": {
     "url": "https://github.com/IonicaBizau/bac-results/issues"
   },
@@ -28,5 +28,44 @@
   "devDependencies": {},
   "directories": {
     "test": "test"
+  },
+  "blah": {
+    "installation": [
+      {
+        "h2": "Configuration"
+      },
+      {
+        "p": "Create a configuration file named `config.json` (you can rename `config.templ.json`), following the template below:"
+      },
+      {
+        "code": {
+          "language": "json",
+          "content": [
+            "{",
+            "    \"mandrillKey\": \"6hvVgv...z0Afgrag\"",
+            "  , \"reqUrl\": \"the url where are posted the results\"",
+            "  , \"to\": {",
+            "        \"email\": \"you@domain.com\"",
+            "      , \"name\": \"Your Awesome Name\"",
+            "    }",
+            "  , \"from\": {",
+            "        \"email\": \"no@spam.com\"",
+            "      , \"name\": \"BAC Exams\"",
+            "    }",
+            "  , \"text\": \"There you go!\"",
+            "}"
+          ]
+        }
+      },
+      {
+        "p": "`reqUrl` can be, for example, this one: `\"http://bacalaureat.edu.ro/Pages/JudetRezultatePartialePerProba.aspx?jud=6&tip=1&unitate=628\"`."
+      },
+      {
+        "h2": "Have fun!"
+      },
+      {
+        "p": "Run `node index` and sleep. :smile:"
+      }
+    ]
   }
 }
