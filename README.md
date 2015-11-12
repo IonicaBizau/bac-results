@@ -5,7 +5,7 @@ A daemon to email the user when the baccalaureate results are posted on the offi
 ## Installation
 
 ```sh
-$ npm i -g bac-results
+$ npm i bac-results
 ```
 
 ## Configuration
