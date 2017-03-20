@@ -1,6 +1,6 @@
 {
   "name": "bac-results",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "A daemon to email the user when the baccalaureate results are posted on the official website.",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,7 @@
     "baccalaureate",
     "daemon"
   ],
-  "author": "Ionică Bizău <bizauionica@gmail.com> (http://ionicabizau.net)",
+  "author": "Ionică Bizău <bizauionica@gmail.com> (https://ionicabizau.net)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/IonicaBizau/bac-results/issues"
@@ -72,12 +72,11 @@
     "bin/",
     "app/",
     "lib/",
-    "build/",
     "dist/",
     "src/",
+    "scripts/",
     "resources/",
     "menu/",
-    "scripts/",
     "cli.js",
     "index.js"
   ]
