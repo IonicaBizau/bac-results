@@ -1,6 +1,6 @@
 {
   "name": "bac-results",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "description": "A daemon to email the user when the baccalaureate results are posted on the official website.",
   "main": "index.js",
   "scripts": {
