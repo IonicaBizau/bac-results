@@ -16,6 +16,7 @@ $ npm i --save bac-results
 
 ## Configuration
 
+
 Create a configuration file named `config.json` (you can rename `config.templ.json`), following the template below:
 
 ```json
@@ -34,9 +35,11 @@ Create a configuration file named `config.json` (you can rename `config.templ.js
 }
 ```
 
+
 `reqUrl` can be, for example, this one: `"http://bacalaureat.edu.ro/Pages/JudetRezultatePartialePerProba.aspx?jud=6&tip=1&unitate=628"`.
 
 ## Have fun!
+
 
 Run `node index` and sleep. :smile:
 
