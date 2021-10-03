@@ -43,7 +43,7 @@
           "content": [
             "{",
             "    \"mandrillKey\": \"6hvVgv...z0Afgrag\"",
-            "  , \"reqUrl\": \"the url where are posted the results\"",
+            "  , \"reqUrl\": \"the url where the results are posted\"",
             "  , \"to\": {",
             "        \"email\": \"you@domain.com\"",
             "      , \"name\": \"Your Awesome Name\"",
